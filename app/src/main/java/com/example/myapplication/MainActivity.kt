@@ -27,42 +27,42 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setupRecyclerView()
-        Log.d(LOG_TAG, "onCreate")
-
-        lifecycleScope.launch {
-            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.viewState.collect {
-                    viewState ->
-                    Log.d(LOG_TAG, viewState.toString())
-                    renderViewState(viewState)
-                }
-
-            }
-        }
+//        setupRecyclerView()
+//        Log.d(LOG_TAG, "onCreate")
+//
+//        lifecycleScope.launch {
+//            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                viewModel.viewState.collect {
+//                    viewState ->
+//                    Log.d(LOG_TAG, viewState.toString())
+//                    renderViewState(viewState)
+//                }
+//
+//            }
+//        }
     }
 
-    private fun renderViewState(viewState: MainViewModel.ViewState) {
-        when (viewState) {
-            is MainViewModel.ViewState.Loading -> {
-                viewBinding.userRecyclerView.isVisible = false
-                viewBinding.progressBar.isVisible = true
-            }
-            is MainViewModel.ViewState.Data -> {
-                viewBinding.userRecyclerView.isVisible = true
-                (viewBinding.userRecyclerView.adapter as UserAdapter).apply {
-                    userList = viewState.userList
-                    notifyDataSetChanged()
-                }
-                viewBinding.progressBar.isVisible = false
-            }
-        }
-    }
-
-    private fun setupRecyclerView(): UserAdapter {
-        val recyclerView = findViewById<RecyclerView>(R.id.userRecyclerView)
-        val adapter = UserAdapter()
-        recyclerView.adapter = adapter
-        return adapter
-    }
+//    private fun renderViewState(viewState: MainViewModel.ViewState) {
+//        when (viewState) {
+//            is MainViewModel.ViewState.Loading -> {
+//                viewBinding.userRecyclerView.isVisible = false
+//                viewBinding.progressBar.isVisible = true
+//            }
+//            is MainViewModel.ViewState.Data -> {
+//                viewBinding.userRecyclerView.isVisible = true
+//                (viewBinding.userRecyclerView.adapter as UserAdapter).apply {
+//                    userList = viewState.userList
+//                    notifyDataSetChanged()
+//                }
+//                viewBinding.progressBar.isVisible = false
+//            }
+//        }
+//    }
+//
+//    private fun setupRecyclerView(): UserAdapter {
+//        val recyclerView = findViewById<RecyclerView>(R.id.userRecyclerView)
+//        val adapter = UserAdapter()
+//        recyclerView.adapter = adapter
+//        return adapter
+//    }
 }
