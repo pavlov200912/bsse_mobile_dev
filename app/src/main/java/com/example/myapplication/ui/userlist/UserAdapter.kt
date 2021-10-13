@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.ui.userlist
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.myapplication.R
+import com.example.myapplication.entity.User
 
-class UserAdapter: RecyclerView.Adapter<UserAdapter.ViewHolder>() {
+class UserAdapter : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
     var userList: List<User> = emptyList()
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/registered_user_nav_graph"
+    app:startDestination="@id/userListFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.myapplication.ui.main.MainFragment"
+        android:label="MainFragment" />
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.example.myapplication.ui.news.NewsFragment"
+        android:label="NewsFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.myapplication.ui.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/userListFragment"
+        android:name="com.example.myapplication.ui.userlist.UserListFragment"
+        android:label="UserListFragment" />
+    <fragment
+        android:id="@+id/likesFragment"
+        android:name="com.example.myapplication.ui.likes.LikesFragment"
+        android:label="LikesFragment" />
+    <fragment
+        android:id="@+id/bookmarksFragment2"
+        android:name="com.example.myapplication.ui.bookmarks.BookmarksFragment"
+        android:label="BookmarksFragment" />
+</navigation>
