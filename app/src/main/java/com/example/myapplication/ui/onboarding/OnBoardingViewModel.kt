@@ -18,8 +18,8 @@ class OnBoardingViewModel: BaseViewModel() {
     val delay: Long = 5000
 
 
-    private val _viewState = MutableStateFlow<ViewState>(ViewState.Sleep)
-    val viewState: Flow<ViewState> get() = _viewState.asStateFlow()
+    private val _viewState = MutableStateFlow<Long>(0)
+    val viewState: Flow<Long> get() = _viewState.asStateFlow()
 
     init {
         userTouchTime = System.currentTimeMillis()
@@ -30,9 +30,7 @@ class OnBoardingViewModel: BaseViewModel() {
                     if (System.currentTimeMillis() - userTouchTime > delay) {
                         Log.d("OnBoarding", "Delay passed")
                         userTouchTime = System.currentTimeMillis()
-                        _viewState.emit(ViewState.Scroll)
-                    } else {
-                        _viewState.emit(ViewState.Sleep)
+                        _viewState.emit(userTouchTime)
                     }
                     Thread.sleep(delay)
                 }

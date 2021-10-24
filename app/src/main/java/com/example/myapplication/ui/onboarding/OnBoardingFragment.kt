@@ -58,7 +58,6 @@ class OnBoardingFragment : Fragment(R.layout.fragment_onboarding) {
         }
 
         viewBinding.volumeControlButton.setOnClickListener {
-            viewBinding.viewPager.scrollCycle(viewBinding.viewPager.adapter?.itemCount ?: 0)
             if (viewModel.isVolume) {
                 player.volume = 0F
                 viewModel.isVolume = false
@@ -83,10 +82,8 @@ class OnBoardingFragment : Fragment(R.layout.fragment_onboarding) {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.viewState.collect {
                         viewState ->
-                    if(viewState !is OnBoardingViewModel.ViewState.Sleep) {
-                        Log.d("OnBoarding", "SCROLL!")
-                        viewBinding.viewPager.scrollCycle(viewBinding.viewPager.adapter?.itemCount ?: 0)
-                    }
+                    Log.d("OnBoarding", "Fragment collect wake up")
+                    viewBinding.viewPager.scrollCycle(viewBinding.viewPager.adapter?.itemCount ?: 0)
                 }
             }
         }
