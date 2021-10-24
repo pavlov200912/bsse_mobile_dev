@@ -1,15 +1,19 @@
 package com.example.myapplication.ui.onboarding
 
+import android.content.Context
+import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.DimenRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.myapplication.R
@@ -25,6 +29,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlin.math.abs
 
 class OnBoardingFragment : Fragment(R.layout.fragment_onboarding) {
 
@@ -45,6 +50,27 @@ class OnBoardingFragment : Fragment(R.layout.fragment_onboarding) {
         viewBinding.playerView.player = player
         viewBinding.viewPager.setTextPages()
         viewBinding.viewPager.attachDots(viewBinding.onboardingTextTabLayout)
+
+
+        // Adapted from https://stackoverflow.com/questions/10098040/android-viewpager-show-preview-of-page-on-left-and-right
+        viewBinding.viewPager.offscreenPageLimit = 1
+
+        val nextItemVisiblePx = resources.getDimension(R.dimen.viewpager_next_item_visible)
+        val currentItemHorizontalMarginPx = resources.getDimension(R.dimen.viewpager_current_item_horizontal_margin)
+        val pageTranslationX = nextItemVisiblePx + currentItemHorizontalMarginPx
+        val pageTransformer = ViewPager2.PageTransformer { page: View, position: Float ->
+            page.translationX = -pageTranslationX * position
+            page.scaleY = 1 - (0.25f * abs(position))
+
+        }
+        viewBinding.viewPager.setPageTransformer(pageTransformer)
+
+        val itemDecoration = HorizontalMarginItemDecoration(
+            requireContext(),
+            R.dimen.viewpager_current_item_horizontal_margin
+        )
+        viewBinding.viewPager.addItemDecoration(itemDecoration)
+
         viewBinding.signInButton.setOnClickListener {
             // TODO: Go to SignInFragment.
             Toast.makeText(requireContext(), "Нажата кнопка войти", Toast.LENGTH_SHORT).show()
@@ -134,6 +160,21 @@ class OnBoardingFragment : Fragment(R.layout.fragment_onboarding) {
         } else {
             this.setCurrentItem(0, true);
         }
+    }
+
+    class HorizontalMarginItemDecoration(context: Context, @DimenRes horizontalMarginInDp: Int) :
+        RecyclerView.ItemDecoration() {
+
+        private val horizontalMarginInPx: Int =
+            context.resources.getDimension(horizontalMarginInDp).toInt()
+
+        override fun getItemOffsets(
+            outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State
+        ) {
+            outRect.right = horizontalMarginInPx
+            outRect.left = horizontalMarginInPx
+        }
+
     }
 
 }

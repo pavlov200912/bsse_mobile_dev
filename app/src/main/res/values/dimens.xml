@@ -2,4 +2,6 @@
 <resources>
     <dimen name="onboarding_dot_size">8dp</dimen>
     <dimen name="onboarding_dot_size_half">4dp</dimen>
+    <dimen name="viewpager_next_item_visible">26dp</dimen>
+    <dimen name="viewpager_current_item_horizontal_margin">42dp</dimen>
 </resources>
