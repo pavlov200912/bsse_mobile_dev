@@ -21,6 +21,7 @@
         <entry key="app/src/main/res/layout/item_onboarding_text.xml" value="0.22916666666666666" />
         <entry key="app/src/main/res/layout/item_user.xml" value="0.22083333333333333" />
         <entry key="app/src/main/res/layout/userlist_fragment.xml" value="0.18802083333333333" />
+        <entry key="app/src/main/res/menu/bottom_navigatiom_menu.xml" value="0.1" />
       </map>
     </option>
   </component>

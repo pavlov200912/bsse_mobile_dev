@@ -23,12 +23,13 @@
         android:id="@+id/signUpFragment"
         android:name="com.example.myapplication.ui.signup.SignUpFragment"
         android:label="SignUpFragment" >
+
         <action
-            android:id="@+id/action_signUpFragment_to_bookmarksFragment"
-            app:destination="@id/bookmarksFragment" />
+            android:id="@+id/action_signUpFragment_to_mainFragment2"
+            app:destination="@id/mainFragment2" />
     </fragment>
     <fragment
-        android:id="@+id/bookmarksFragment"
-        android:name="com.example.myapplication.ui.bookmarks.BookmarksFragment"
-        android:label="BookmarksFragment" />
+        android:id="@+id/mainFragment2"
+        android:name="com.example.myapplication.ui.main.MainFragment"
+        android:label="MainFragment" />
 </navigation>

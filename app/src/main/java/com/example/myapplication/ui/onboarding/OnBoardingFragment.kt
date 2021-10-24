@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.myapplication.R
@@ -47,11 +48,13 @@ class OnBoardingFragment : Fragment(R.layout.fragment_onboarding) {
         viewBinding.signInButton.setOnClickListener {
             // TODO: Go to SignInFragment.
             Toast.makeText(requireContext(), "Нажата кнопка войти", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_onBoardingFragment_to_signInFragment)
         }
         viewBinding.signUpButton.setOnClickListener {
             // TODO: Go to SignUpFragment.
             Toast.makeText(requireContext(), "Нажата кнопка зарегистрироваться", Toast.LENGTH_SHORT)
                 .show()
+            findNavController().navigate(R.id.action_onBoardingFragment_to_signUpFragment)
         }
 
         viewBinding.volumeControlButton.setOnClickListener {
