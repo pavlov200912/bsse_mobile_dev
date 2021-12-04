@@ -1,16 +1,25 @@
 package com.example.myapplication.repository
 
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 object AuthRepository {
 
-    val _isAuthorizedFlow = MutableStateFlow(false)
+    private val _isAuthorizedFlow = MutableStateFlow(false)
     val isAuthorizedFlow = _isAuthorizedFlow.asStateFlow()
 
-    suspend fun signIn() {
+    suspend fun signIn(email: String, password: String) {
         _isAuthorizedFlow.emit(true)
+    }
+
+    suspend fun signUp(
+        firstname: String,
+        lastname: String,
+        nickname: String,
+        email: String,
+        password: String
+    ) {
+        //TODO: Get API response
     }
 
     suspend fun logout() {

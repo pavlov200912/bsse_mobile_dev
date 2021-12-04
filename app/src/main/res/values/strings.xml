@@ -13,6 +13,11 @@
     <string name="bottom_navigation_title_profile">Профиль</string>
     
     <string name="sign_in_sign_in_button_text">Войти</string>
+    <string name="sign_in_email_text_layout_hint">Почта</string>
+    <string name="sign_in_password_text_layout_hint">Пароль</string>
+    <string name="sign_in_back_alert_dialog_text">Введенные данные пропадут</string>
+    <string name="sign_in_back_alert_dialog_cancel_button_text">Отменить</string>
+    <string name="sign_in_back_alert_dialog_ok_button_text">Ок</string>
 
 
 </resources>
