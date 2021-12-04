@@ -1,8 +1,10 @@
-package com.example.myapplication
+package com.example.myapplication.ui.userlist
 
 import android.util.Log
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.myapplication.data.net.Api
+import com.example.myapplication.entity.User
+import com.example.myapplication.ui.base.BaseViewModel
 import com.squareup.moshi.Moshi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -14,7 +16,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-class MainViewModel : BaseViewModel() {
+class UserListViewModel : BaseViewModel() {
 
 
     companion object {
