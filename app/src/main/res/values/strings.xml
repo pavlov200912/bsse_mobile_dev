@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Пельмени от Шлёппы</string>
+
+    <string name="common_back_alert_dialog_text">Введенные данные пропадут</string>
+    <string name="common_back_alert_dialog_cancel_button_text">Отменить</string>
+    <string name="common_back_alert_dialog_ok_button_text">Ок</string>
+
     <string name="onboarding_view_pager_text_1">Осень 2021 г., СПбГУ</string>
     <string name="onboarding_view_pager_text_2">Мы изучаем разработку под Android</string>
     <string name="onboarding_view_pager_text_3">Добро пожаловатьв команду</string>
@@ -15,9 +20,16 @@
     <string name="sign_in_sign_in_button_text">Войти</string>
     <string name="sign_in_email_text_layout_hint">Почта</string>
     <string name="sign_in_password_text_layout_hint">Пароль</string>
-    <string name="sign_in_back_alert_dialog_text">Введенные данные пропадут</string>
-    <string name="sign_in_back_alert_dialog_cancel_button_text">Отменить</string>
-    <string name="sign_in_back_alert_dialog_ok_button_text">Ок</string>
+
+    <string name="sign_up_first_name_text_hint">Имя</string>
+    <string name="sign_up_last_name_text_hint">Фамилия</string>
+    <string name="sign_up_nickname_text_hint">Имя пользователя</string>
+    <string name="sign_up_nickname_text_helper">Будет доступно другим пользователям</string>
+    <string name="sign_up_email_text_hint">Почта</string>
+    <string name="sign_up_password_text_hint">Пароль</string>
+    <string name="sign_up_sign_up_button_text">Зарегистрироваться</string>
+    <string name="sign_up_terms_and_conditions_template">Я принимаю %s</string>
+    <string name="sign_up_club_rules">правила клуба</string>
 
 
 </resources>
