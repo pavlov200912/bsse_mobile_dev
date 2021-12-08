@@ -6,7 +6,11 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.26510416666666664" />
         <entry key="app/src/main/res/drawable/bg_onboarding_dot_indicator.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/drawable/bg_onboarding_dot_normal.xml" value="0.24947916666666667" />
+        <entry key="app/src/main/res/drawable/bg_verification_code_slot_activated.xml" value="0.21354166666666666" />
+        <entry key="app/src/main/res/drawable/bg_verification_code_slot_cursor.xml" value="0.21354166666666666" />
+        <entry key="app/src/main/res/drawable/bg_verification_code_slot_normal.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/drawable/ic_android_white_24dp.xml" value="0.228125" />
+        <entry key="app/src/main/res/drawable/selector_bg_verification_code_slot.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.31567028985507245" />
         <entry key="app/src/main/res/layout/fragment_bookmarks.xml" value="0.18802083333333333" />
         <entry key="app/src/main/res/layout/fragment_email_confirmation.xml" value="0.22916666666666666" />
@@ -21,6 +25,8 @@
         <entry key="app/src/main/res/layout/item_onboarding_text.xml" value="0.22916666666666666" />
         <entry key="app/src/main/res/layout/item_user.xml" value="0.22083333333333333" />
         <entry key="app/src/main/res/layout/userlist_fragment.xml" value="0.18802083333333333" />
+        <entry key="app/src/main/res/layout/view_verification_code_edit.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/view_verification_code_slot.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/menu/bottom_navigatiom_menu.xml" value="0.1" />
       </map>
     </option>

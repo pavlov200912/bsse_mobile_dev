@@ -32,6 +32,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = "pavlov-ivan-${variant.versionName}-${variant.buildType.name}.apk"
+        }
+    }
 }
 
 dependencies {
@@ -87,4 +93,9 @@ dependencies {
     def navigationVersion = "2.4.0-alpha09"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    // System insets handling.
+    // https://chrisbanes.github.io/insetter
+    // https://github.com/chrisbanes/insetter
+    implementation "dev.chrisbanes.insetter:insetter:0.6.0"
 }
