@@ -10,7 +10,7 @@
         <item name="backgroundTint">@color/mcs_orange</item>
     </style>
     <style name="Widget.ApplicationShlepa.Button.Secondary">
-        <item name="backgroundTint">@color/mcs_turquoise</item>
+        <item name="backgroundTint">@color/mcs_teal</item>
     </style>
     <style name="Widget.ApplicationShlepa.BackButton" parent="Widget.AppCompat.ImageButton">
         <item name="android:layout_width">48dp</item>

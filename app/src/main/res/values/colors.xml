@@ -9,6 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#FFCCCCCC</color>
     <color name="mcs_orange">#FFF58C29</color>
-    <color name="mcs_turquoise">#FF1ECECA</color>
+    <color name="mcs_teal">#6DC8C3</color>
     <color name="mcs_blue">#FF0074C8</color>
 </resources>

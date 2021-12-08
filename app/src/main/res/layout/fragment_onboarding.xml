@@ -78,6 +78,7 @@
         app:layout_constraintBottom_toTopOf="@+id/signUpButton" />
 
     <Button
+        style="@style/Widget.ApplicationShlepa.Button.Secondary"
         android:id="@+id/signUpButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
