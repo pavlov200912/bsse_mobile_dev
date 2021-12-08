@@ -7,10 +7,10 @@
         <item name="android:minHeight">56dp</item>
     </style>
     <style name="Widget.ApplicationShlepa.Button.Primary">
-        <item name="backgroundTint">@color/brand_orange</item>
+        <item name="backgroundTint">@color/mcs_orange</item>
     </style>
     <style name="Widget.ApplicationShlepa.Button.Secondary">
-        <item name="backgroundTint">@color/brand_turquoise</item>
+        <item name="backgroundTint">@color/mcs_turquoise</item>
     </style>
     <style name="Widget.ApplicationShlepa.BackButton" parent="Widget.AppCompat.ImageButton">
         <item name="android:layout_width">48dp</item>
@@ -31,13 +31,13 @@
         <item name="android:paddingTop">16dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Body1</item>
-        <item name="android:textColor">@color/brand_blue</item>
+        <item name="android:textColor">@color/mcs_blue</item>
     </style>
     <style name="Widget.ApplicationShlepa.EditText" parent="Widget.AppCompat.EditText">
-        <item name="android:background">@color/brand_orange</item>
+        <item name="android:background">@color/mcs_orange</item>
     </style>
     <style name="Widget.ApplicationShlepa.CheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
-        <item name="android:buttonTint">@color/brand_blue</item>
+        <item name="android:buttonTint">@color/mcs_blue</item>
     </style>
 
     <style name="Widget.ApplicationShlepa.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">

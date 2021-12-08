@@ -43,7 +43,7 @@ fun CheckBox.setClubRulesText(clubRulesClickListener: () -> Unit) {
         override fun onClick(widget: View) = clubRulesClickListener()
         override fun updateDrawState(ds: TextPaint) {
             super.updateDrawState(ds)
-            ds.color = resources.getColor(R.color.brand_blue, null)
+            ds.color = resources.getColor(R.color.mcs_blue, null)
         }
     }
 
