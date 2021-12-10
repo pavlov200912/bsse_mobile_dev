@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Widget.ApplicationShlepa.VerificationCodeEditText" parent="">
+        <item name="vcet_numberOfSlots">6</item>
+    </style>
+    <style name="Widget.ApplicationShlepa.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:minHeight">56dp</item>
+    </style>
+    <style name="Widget.ApplicationShlepa.Button.Primary">
+        <item name="backgroundTint">@color/mcs_orange</item>
+    </style>
+    <style name="Widget.ApplicationShlepa.Button.Secondary">
+        <item name="backgroundTint">@color/mcs_teal</item>
+    </style>
+    <style name="Widget.ApplicationShlepa.BackButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginStart">12dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:src">@drawable/ic_baseline_arrow_back_24</item>
+    </style>
+    <style name="Widget.ApplicationShlepa.LinkButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:gravity">center</item>
+        <item name="maxWidth">300dp</item>
+        <item name="minHeight">48dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Body1</item>
+        <item name="android:textColor">@color/mcs_blue</item>
+    </style>
+    <style name="Widget.ApplicationShlepa.EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@color/mcs_orange</item>
+    </style>
+    <style name="Widget.ApplicationShlepa.CheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:buttonTint">@color/mcs_blue</item>
+    </style>
+
+    <style name="Widget.ApplicationShlepa.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    </style>
+</resources>

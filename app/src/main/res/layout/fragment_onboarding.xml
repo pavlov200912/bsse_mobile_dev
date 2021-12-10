@@ -75,9 +75,10 @@
         android:text="@string/onboarding_sign_in_button_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/onboardingTextTabLayout" />
+        app:layout_constraintBottom_toTopOf="@+id/signUpButton" />
 
     <Button
+        style="@style/Widget.ApplicationShlepa.Button.Secondary"
         android:id="@+id/signUpButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -85,7 +86,8 @@
         android:text="@string/onboarding_sign_up_button_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInButton" />
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

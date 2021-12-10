@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Пельмени от Шлёппы</string>
+    <string name="app_name">Пельмени от Шлёппы Домашние</string>
 
     <string name="common_back_alert_dialog_text">Введенные данные пропадут</string>
     <string name="common_back_alert_dialog_cancel_button_text">Отменить</string>
@@ -31,5 +31,9 @@
     <string name="sign_up_terms_and_conditions_template">Я принимаю %s</string>
     <string name="sign_up_club_rules">правила клуба</string>
 
+    <string name="email_confirmation_enter_code">Введите код, отправленный Вам на почту</string>
+    <string name="email_confirmation_confirm">Подтвердить</string>
+    <string name="email_confirmation_send_code_again">Отправить код повторно</string>
+    <string name="email_confirmation_open_email">Открыть почту</string>
 
 </resources>

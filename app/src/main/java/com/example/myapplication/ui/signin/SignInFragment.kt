@@ -11,6 +11,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentSignInBinding
 import com.example.myapplication.ui.base.BaseFragment
+import dev.chrisbanes.insetter.applyInsetter
 
 class SignInFragment : BaseFragment(R.layout.fragment_sign_in) {
     val viewModel: SignInViewModel by viewModels()
@@ -31,6 +32,12 @@ class SignInFragment : BaseFragment(R.layout.fragment_sign_in) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewBinding.backButton.applyInsetter {
+            type(statusBars = true) { margin() }
+        }
+        viewBinding.signInButton.applyInsetter {
+            type(navigationBars = true) { margin() }
+        }
         viewBinding.backButton.setOnClickListener {
             onBackButtonPressed()
         }
