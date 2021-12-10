@@ -43,6 +43,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/firstnameEditText"
+
+
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
@@ -141,6 +144,7 @@
 
         <Button
             android:id="@+id/signUpButton"
+            style="@style/Widget.ApplicationShlepa.Button.Secondary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
