@@ -1,13 +1,15 @@
 package com.example.myapplication.ui.userlist
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.BuildConfig
 import com.example.myapplication.data.net.Api
 import com.example.myapplication.data.net.MockApi
 import com.example.myapplication.entity.User
+import com.example.myapplication.interactor.UsersInteractor
 import com.example.myapplication.ui.base.BaseViewModel
+import com.haroldadmin.cnradapter.NetworkResponse
 import com.squareup.moshi.Moshi
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,55 +19,40 @@ import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import timber.log.Timber
+import javax.inject.Inject
 
-class UserListViewModel : BaseViewModel() {
-
-
-    companion object {
-        val LOG_TAG = "HelloWorld"
-    }
+@HiltViewModel
+class UserListViewModel @Inject constructor(
+    private val usersInteractor: UsersInteractor
+) : BaseViewModel() {
 
     private val _viewState = MutableStateFlow<ViewState>(ViewState.Loading)
     val viewState: Flow<ViewState> get() = _viewState.asStateFlow()
 
 
     init {
+        loadUsers()
+    }
+
+
+    private fun loadUsers() {
         viewModelScope.launch {
-            _viewState.emit(ViewState.Loading)
-            Log.d(LOG_TAG, "Start loading users")
-            val users = loadUsers()
-            Log.d(LOG_TAG, "End loading users")
-            _viewState.emit(ViewState.Data(users))
+            withContext(Dispatchers.IO) {
+                Timber.d("load users()")
+                Thread.sleep(3000)
+
+                _viewState.emit(ViewState.Loading)
+                when (val response = usersInteractor.loadUsers()) {
+                    is NetworkResponse.Success -> {
+                        _viewState.emit(ViewState.Data(response.body))
+                    }
+                    else -> {
+
+                    }
+                }
+            }
         }
-    }
-
-
-    private suspend fun loadUsers(): List<User> {
-        return withContext(Dispatchers.IO) {
-            Log.d(LOG_TAG, "loadUsers()")
-            Thread.sleep(3000)
-            provideApi().getUsers().data
-        }
-    }
-
-    private fun provideApi(): Api =
-        if (BuildConfig.USE_MOCK_BACKEND_API) {
-            MockApi()
-        } else {
-            Retrofit.Builder()
-                .client(provideOkHttpClient())
-                .baseUrl("https://reqres.in/api/")
-                .addConverterFactory(MoshiConverterFactory.create(provideMoshi()))
-                .build()
-                .create(Api::class.java)
-        }
-
-    private fun provideOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder().build()
-    }
-
-    private fun provideMoshi(): Moshi {
-        return Moshi.Builder().build()
     }
 
 
@@ -73,4 +60,5 @@ class UserListViewModel : BaseViewModel() {
         object Loading : ViewState()
         data class Data(val userList: List<User>) : ViewState()
     }
+
 }

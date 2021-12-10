@@ -74,7 +74,13 @@ android {
         }
     }
 }
+kapt {
+    correctErrorTypes true
+}
 
+hilt {
+    enableAggregatingTask = true
+}
 
 
 dependencies {

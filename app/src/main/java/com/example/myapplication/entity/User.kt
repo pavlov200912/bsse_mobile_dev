@@ -5,7 +5,10 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class User(
-    @Json(name = "avatar") val avatarUrl: String, // For example: "https://mydomain.com/user_1_avatar.jpg"
-    @Json(name = "first_name") val userName: String,
-    @Json(name = "email") val groupName: String
+    @Json(name = "id") val id: Long,
+    @Json(name = "first_name") val firstName: String,
+    @Json(name = "last_name") val lastName: String,
+    @Json(name = "username") val userName: String,
+    @Json(name = "avatar") val avatarUrl: String?,
+    @Json(name = "group_name") val groupName: String?
 )
