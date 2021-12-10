@@ -72,14 +72,9 @@ class OnBoardingFragment : Fragment(R.layout.fragment_onboarding) {
         viewBinding.viewPager.addItemDecoration(itemDecoration)
 
         viewBinding.signInButton.setOnClickListener {
-            // TODO: Go to SignInFragment.
-            Toast.makeText(requireContext(), "Нажата кнопка войти", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_onBoardingFragment_to_signInFragment)
         }
         viewBinding.signUpButton.setOnClickListener {
-            // TODO: Go to SignUpFragment.
-            Toast.makeText(requireContext(), "Нажата кнопка зарегистрироваться", Toast.LENGTH_SHORT)
-                .show()
             findNavController().navigate(R.id.action_onBoardingFragment_to_signUpFragment)
         }
 

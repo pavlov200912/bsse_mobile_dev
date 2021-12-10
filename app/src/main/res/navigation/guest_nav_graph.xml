@@ -32,4 +32,8 @@
         android:id="@+id/mainFragment2"
         android:name="com.example.myapplication.ui.main.MainFragment"
         android:label="MainFragment" />
+    <fragment
+        android:id="@+id/emailConfirmationFragment"
+        android:name="com.example.myapplication.ui.emailconfirmation.EmailConfirmationFragment"
+        android:label="EmailConfirmationFragment" />
 </navigation>
