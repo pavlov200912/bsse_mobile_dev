@@ -35,5 +35,6 @@
     <string name="email_confirmation_confirm">Подтвердить</string>
     <string name="email_confirmation_send_code_again">Отправить код повторно</string>
     <string name="email_confirmation_open_email">Открыть почту</string>
+    <string name="news_toolbar_title">Мобильная разработка</string>
 
 </resources>

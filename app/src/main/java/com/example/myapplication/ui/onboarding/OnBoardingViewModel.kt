@@ -26,9 +26,8 @@ class OnBoardingViewModel: BaseViewModel() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 while (true) {
-                    Log.d("OnBoarding", "Running in cycle $userTouchTime")
+                    // todo: do you ever stop?
                     if (System.currentTimeMillis() - userTouchTime > delay) {
-                        Log.d("OnBoarding", "Delay passed")
                         userTouchTime = System.currentTimeMillis()
                         _viewState.emit(userTouchTime)
                     }

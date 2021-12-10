@@ -15,6 +15,7 @@
         <item name="editTextStyle">@style/Widget.ApplicationShlepa.EditText</item>
         <item name="textInputStyle">@style/Widget.ApplicationShlepa.TextInputLayout</item>
         <item name="materialButtonStyle">@style/Widget.ApplicationShlepa.Button.Primary</item>
+        <item name="toolbarStyle">@style/Widget.ApplicationShlepa.Toolbar</item>
         <item name="verificationCodeEditTextStyle">@style/Widget.ApplicationShlepa.VerificationCodeEditText</item>
     </style>
 </resources>
