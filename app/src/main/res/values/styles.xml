@@ -42,4 +42,13 @@
 
     <style name="Widget.ApplicationShlepa.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
     </style>
+
+    <style name="Widget.ApplicationShlepa.Toolbar" parent="">
+<!--        <item name="android:background">@color/mcs_blue</item>-->
+<!--        <item name="android:textColor">@color/white</item>-->
+
+        <item name="titleTextColor">@color/white</item>
+        <item name="android:background">@color/mcs_blue</item>
+        <item name="titleCentered">true</item>
+    </style>
 </resources>

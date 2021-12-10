@@ -16,11 +16,11 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val avatarImageView = itemView.findViewById<ImageView>(R.id.avatarImageView)
+        val avatarImageView = itemView.findViewById<ImageView>(R.id.postImageView)
 
-        val userNameTextView = itemView.findViewById<TextView>(R.id.userNameTextView)
+        val userNameTextView = itemView.findViewById<TextView>(R.id.postTitleView)
 
-        val groupNameTextView = itemView.findViewById<TextView>(R.id.groupNameTextView)
+        val groupNameTextView = itemView.findViewById<TextView>(R.id.descriptionTextView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
