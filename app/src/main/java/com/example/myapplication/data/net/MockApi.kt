@@ -6,6 +6,7 @@ import com.example.myapplication.data.net.request.SignInWithEmailRequest
 import com.example.myapplication.data.net.response.VerificationTokenResponse
 import com.example.myapplication.data.net.response.error.*
 import com.example.myapplication.entity.AuthTokens
+import com.example.myapplication.entity.Post
 import com.example.myapplication.entity.User
 import com.haroldadmin.cnradapter.NetworkResponse
 
@@ -50,5 +51,40 @@ class MockApi : Api {
 
     override suspend fun createProfile(request: CreateProfileRequest): NetworkResponse<AuthTokens, CreateProfileErrorResponse> {
         TODO("Not yet implemented")
+    }
+
+    override suspend fun getPosts(): NetworkResponse<List<Post>, Unit> {
+        return NetworkResponse.Success(
+            listOf(
+                Post(
+                    id=1,
+                    linkUrl = "https://developer.android.com/training/dependency-injection/hilt-android",
+                    imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Cawood_sword_-_hilt_-_YORYM_2007_3086.JPG/1200px-Cawood_sword_-_hilt_-_YORYM_2007_3086.JPG",
+                    title = "Android hilt",
+                    text = "Dependency injection is very important",
+                    createdAt = "",
+                    updatedAt = ""
+                ),
+                Post(
+                    id=2,
+                    linkUrl = null,
+                    imageUrl = "https://static01.nyt.com/images/2021/09/14/science/07CAT-STRIPES/07CAT-STRIPES-mediumSquareAt3X-v2.jpg",
+                    title = "Cat",
+                    text = "Just cat",
+                    createdAt = "",
+                    updatedAt = ""
+                ),
+                Post(
+                    id=3,
+                    title = "Hello world",
+                    text = "Some text with post",
+                    createdAt = "",
+                    updatedAt = "",
+                    linkUrl = null,
+                    imageUrl = null
+                )
+            ),
+            code = 200
+        )
     }
 }

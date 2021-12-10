@@ -6,6 +6,7 @@ import com.example.myapplication.data.net.request.SignInWithEmailRequest
 import com.example.myapplication.data.net.response.VerificationTokenResponse
 import com.example.myapplication.data.net.response.error.*
 import com.example.myapplication.entity.AuthTokens
+import com.example.myapplication.entity.Post
 import com.example.myapplication.entity.User
 import com.haroldadmin.cnradapter.NetworkResponse
 import com.squareup.moshi.Json
@@ -43,6 +44,9 @@ interface Api {
     suspend fun createProfile(
         @Body request: CreateProfileRequest
     ): NetworkResponse<AuthTokens, CreateProfileErrorResponse>
+
+    @POST("posts")
+    suspend fun getPosts(): NetworkResponse<List<Post>, Unit>
 }
 
 @JsonClass(generateAdapter = true)
