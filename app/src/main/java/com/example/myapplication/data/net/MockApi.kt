@@ -11,14 +11,17 @@ import com.example.myapplication.entity.User
 import com.haroldadmin.cnradapter.NetworkResponse
 
 class MockApi : Api {
-    override suspend fun getUsers(): GetUsersResponse {
-//        TODO("Not yet implemented")
-        return GetUsersResponse(
+    override suspend fun getUsers(): NetworkResponse<List<User>, Unit> {
+        return NetworkResponse.Success(
             listOf(User(
                 avatarUrl = "https://memepedia.ru/wp-content/uploads/2020/10/big-floppa-meme.png",
                 userName = "Shlepa",
-                groupName = "MCS"
-            ))
+                groupName = "MCS",
+                id = 1,
+                firstName = "Shlepa",
+                lastName = "Pelmenev"
+            )),
+            code = 200
         )
     }
 
@@ -43,8 +46,7 @@ class MockApi : Api {
 
     override suspend fun verifyRegistrationCode(
         code: String,
-        email: String?,
-        phoneNumber: String?
+        email: String
     ): NetworkResponse<VerificationTokenResponse, VerifyRegistrationCodeErrorResponse> {
         TODO("Not yet implemented")
     }

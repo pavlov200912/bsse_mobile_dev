@@ -15,9 +15,12 @@ import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.databinding.FragmentUserlistBinding
 import com.example.myapplication.ui.MainViewModel
 import com.example.myapplication.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
+import dev.chrisbanes.insetter.applyInsetter
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class UserListFragment : BaseFragment(R.layout.fragment_userlist) {
     private lateinit var viewModel: UserListViewModel
     private val viewBinding by viewBinding(FragmentUserlistBinding::bind)
@@ -30,22 +33,22 @@ class UserListFragment : BaseFragment(R.layout.fragment_userlist) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.viewState.collect {
-                     viewState ->
-                        renderViewState(viewState)
+        subscribeToViewState()
+        viewBinding.usersRecyclerView.applyInsetter {
+            type(statusBars = true) { margin() }
+        }
+    }
 
-                }
+    private fun subscribeToViewState() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.viewState.collect { viewState -> renderViewState(viewState) }
             }
         }
     }
 
-    private fun setupRecyclerView(): UserAdapter {
-        val recyclerView = viewBinding.usersRecyclerView
-        val adapter = UserAdapter()
-        recyclerView.adapter = adapter
-        return adapter
+    private fun setupRecyclerView(): UserAdapter = UserAdapter().also {
+        viewBinding.usersRecyclerView.adapter = it
     }
 
     private fun renderViewState(viewState: UserListViewModel.ViewState) {
