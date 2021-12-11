@@ -11,4 +11,5 @@
     <color name="mcs_orange">#FFF58C29</color>
     <color name="mcs_teal">#6DC8C3</color>
     <color name="mcs_blue">#FF0074C8</color>
+    <color name="color_post_like_border">#FF1ECECA</color>
 </resources>
