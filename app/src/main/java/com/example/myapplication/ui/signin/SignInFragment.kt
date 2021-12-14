@@ -3,6 +3,9 @@ package com.example.myapplication.ui.signin
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.LinearInterpolator
+import android.view.animation.RotateAnimation
 import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
@@ -48,6 +51,15 @@ class SignInFragment : BaseFragment(R.layout.fragment_sign_in) {
                 viewBinding.emailEditText.text?.toString() ?: "",
                 viewBinding.passwordEditText.text?.toString() ?: ""
             )
+        }
+        viewBinding.mknLogoImageView.apply {
+            // 0 to 180 have strange effect, middle cube dissapears from time to time
+            // I'll keep it
+            val rotation = RotateAnimation(0.0f, 180.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
+            rotation.interpolator = LinearInterpolator()
+            rotation.duration = 5000L
+            rotation.repeatCount = Animation.INFINITE
+            startAnimation(rotation)
         }
         subscribeToFormFields()
     }
