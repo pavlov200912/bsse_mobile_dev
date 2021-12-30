@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.emailconfirmation
 
+import android.os.CountDownTimer
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.net.response.error.CreateProfileErrorResponse
 import com.example.myapplication.data.net.response.error.SendRegistrationVerificationCodeErrorResponse
@@ -23,6 +24,12 @@ class EmailConfirmationViewModel @Inject constructor(
 ) :
     BaseViewModel() {
 
+    private val TIMEOUT = 15L
+    private var timer: CountDownTimer? = null
+    private val _timerStateFlow = MutableStateFlow(0L)
+    val timerStateFlow = _timerStateFlow.asStateFlow()
+
+
     private val _emailConfirmationActionStateFlow =
         MutableStateFlow<EmailConfirmationActionState>(
             EmailConfirmationActionState.Pending
@@ -37,6 +44,20 @@ class EmailConfirmationViewModel @Inject constructor(
         when (val response = registerWithEmailInteractor.sendVerificationCode(email)) {
             is NetworkResponse.Success -> {
                 _emailConfirmationActionStateFlow.emit(EmailConfirmationActionState.Pending)
+                timer?.cancel() // if there is a timer, shut it down - we have a code already
+                timer = object : CountDownTimer(TIMEOUT * 1000, 150L) {
+                    override fun onTick(leftMs: Long) {
+                        viewModelScope.launch {
+                            _timerStateFlow.emit(leftMs)
+                        }
+                    }
+
+                    override fun onFinish() {
+                        viewModelScope.launch {
+                            _timerStateFlow.emit(0)
+                        }
+                    }
+                }.start()
             }
             is NetworkResponse.ServerError -> {
                 _emailConfirmationActionStateFlow.emit(
@@ -150,10 +171,19 @@ class EmailConfirmationViewModel @Inject constructor(
     sealed class EmailConfirmationActionState {
         object Pending : EmailConfirmationActionState()
         object Loading : EmailConfirmationActionState()
-        data class ServerError(val e: NetworkResponse.ServerError<CreateProfileErrorResponse>) : EmailConfirmationActionState()
-        data class SendVerificationCodeError(val e: NetworkResponse.ServerError<SendRegistrationVerificationCodeErrorResponse>) : EmailConfirmationActionState()
-        data class EmailVerificationError(val e: NetworkResponse.ServerError<VerifyRegistrationCodeErrorResponse>) : EmailConfirmationActionState()
-        data class NetworkError(val e: NetworkResponse.NetworkError) : EmailConfirmationActionState()
-        data class UnknownError(val e: NetworkResponse.UnknownError) : EmailConfirmationActionState()
+        data class ServerError(val e: NetworkResponse.ServerError<CreateProfileErrorResponse>) :
+            EmailConfirmationActionState()
+
+        data class SendVerificationCodeError(val e: NetworkResponse.ServerError<SendRegistrationVerificationCodeErrorResponse>) :
+            EmailConfirmationActionState()
+
+        data class EmailVerificationError(val e: NetworkResponse.ServerError<VerifyRegistrationCodeErrorResponse>) :
+            EmailConfirmationActionState()
+
+        data class NetworkError(val e: NetworkResponse.NetworkError) :
+            EmailConfirmationActionState()
+
+        data class UnknownError(val e: NetworkResponse.UnknownError) :
+            EmailConfirmationActionState()
     }
 }
