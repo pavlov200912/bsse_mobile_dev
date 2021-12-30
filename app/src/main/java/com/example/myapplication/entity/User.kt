@@ -10,5 +10,6 @@ data class User(
     @Json(name = "last_name") val lastName: String,
     @Json(name = "username") val userName: String,
     @Json(name = "avatar") val avatarUrl: String?,
-    @Json(name = "group_name") val groupName: String?
+    @Json(name = "group_name") val groupName: String?,
+    @Json(name=  "age") val age: String? = null
 )

@@ -46,4 +46,7 @@ interface Api {
 
     @POST("posts")
     suspend fun getPosts(): NetworkResponse<List<Post>, Unit>
+
+    @GET("users/get-profile")
+    suspend fun getProfile(): NetworkResponse<User, Unit>
 }

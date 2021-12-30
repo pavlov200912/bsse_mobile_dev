@@ -113,4 +113,18 @@ class MockApi : Api {
             code = 200
         )
     }
+
+    override suspend fun getProfile(): NetworkResponse<User, Unit> {
+        return NetworkResponse.Success(
+            User(
+                avatarUrl = "https://memepedia.ru/wp-content/uploads/2020/10/big-floppa-meme.png",
+                userName = "Shlepa",
+                groupName = "MCS",
+                id = 1,
+                firstName = "Shlepa",
+                lastName = "Pelmenev"
+            ),
+            code = 200,
+        )
+    }
 }
