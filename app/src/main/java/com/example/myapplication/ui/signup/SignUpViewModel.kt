@@ -4,18 +4,32 @@ import androidx.lifecycle.viewModelScope
 import com.example.myapplication.repository.AuthRepository
 import com.example.myapplication.repository.AuthRepositoryOld
 import com.example.myapplication.ui.base.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import timber.log.Timber
+import javax.inject.Inject
 
-class SignUpViewModel : BaseViewModel() {
+@HiltViewModel
+class SignUpViewModel @Inject constructor()  : BaseViewModel() {
 
     private val _eventChannel = Channel<Event>(Channel.BUFFERED)
 
     fun eventsFlow(): Flow<Event> {
         return _eventChannel.receiveAsFlow()
     }
+
+    var signUpData: SignUpData? = null
+
+    data class SignUpData(
+        val firstname: String,
+        val lastname: String,
+        val nickname: String,
+        val email: String,
+        val password: String
+    )
 
     fun signUp(
         firstname: String,
@@ -26,13 +40,13 @@ class SignUpViewModel : BaseViewModel() {
     ) {
         viewModelScope.launch {
             try {
-                AuthRepositoryOld.signUp(
-                    firstname,
+
+                signUpData = SignUpData(firstname,
                     lastname,
                     nickname,
                     email,
-                    password
-                )
+                    password)
+                Timber.d("data set up")
                 // _eventChannel.send(Event.SignUpSuccess)
                 _eventChannel.send(Event.SignUpEmailConfirmationRequired)
             } catch (error: Exception) {

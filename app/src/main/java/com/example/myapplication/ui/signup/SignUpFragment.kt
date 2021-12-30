@@ -9,6 +9,7 @@ import android.text.TextWatcher
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -18,12 +19,13 @@ import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentSignUpBinding
 import com.example.myapplication.ui.base.BaseFragment
 import com.example.myapplication.util.setClubRulesText
+import dagger.hilt.android.AndroidEntryPoint
 import dev.chrisbanes.insetter.applyInsetter
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-
+@AndroidEntryPoint
 class SignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
-    private val viewModel: SignUpViewModel by viewModels()
+    private val viewModel: SignUpViewModel by hiltNavGraphViewModels(R.id.signUpFragment)
     private val viewBinding by viewBinding(FragmentSignUpBinding::bind)
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -3,6 +3,7 @@ package com.example.myapplication.interactor
 
 
 
+import com.example.myapplication.data.net.response.error.CreateProfileErrorResponse
 import com.example.myapplication.data.net.response.error.SignInWithEmailErrorResponse
 import com.example.myapplication.entity.AuthTokens
 import com.example.myapplication.repository.AuthRepository
@@ -33,5 +34,25 @@ class AuthInteractor @Inject constructor(
 
     suspend fun logout() {
         authRepository.saveAuthTokens(null)
+    }
+
+    suspend fun signUpWithEmailAndInfo(
+        email: String,
+        firstName: String,
+        lastName: String,
+        userName: String,
+        password: String,
+        code: String
+    ): NetworkResponse<AuthTokens, CreateProfileErrorResponse> {
+        val response = authRepository.generateAuthTokensByEmailAndPersonalInfo(email, code, firstName, lastName, userName, password)
+        when (response) {
+            is NetworkResponse.Success -> {
+                authRepository.saveAuthTokens(response.body)
+            }
+            is NetworkResponse.Error -> {
+                Timber.e(response.error)
+            }
+        }
+        return response
     }
 }
