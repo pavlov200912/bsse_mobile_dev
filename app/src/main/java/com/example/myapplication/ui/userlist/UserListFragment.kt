@@ -37,6 +37,11 @@ class UserListFragment : BaseFragment(R.layout.fragment_userlist) {
         viewBinding.usersRecyclerView.applyInsetter {
             type(statusBars = true) { margin() }
         }
+
+        viewBinding.refreshButton.setOnClickListener {
+            viewModel.loadUsers()
+        }
+
     }
 
     private fun subscribeToViewState() {
@@ -56,6 +61,9 @@ class UserListFragment : BaseFragment(R.layout.fragment_userlist) {
             is UserListViewModel.ViewState.Loading -> {
                 viewBinding.usersRecyclerView.isVisible = false
                 viewBinding.progressBar.isVisible = true
+
+                viewBinding.refreshButton.isVisible = false
+                viewBinding.errorText.isVisible = false
             }
             is UserListViewModel.ViewState.Data -> {
                 viewBinding.usersRecyclerView.isVisible = true
@@ -64,6 +72,25 @@ class UserListFragment : BaseFragment(R.layout.fragment_userlist) {
                     notifyDataSetChanged()
                 }
                 viewBinding.progressBar.isVisible = false
+
+                viewBinding.refreshButton.isVisible = false
+                viewBinding.errorText.isVisible = false
+            }
+            is UserListViewModel.ViewState.Error -> {
+                viewBinding.usersRecyclerView.isVisible = false
+                viewBinding.progressBar.isVisible = false
+
+                viewBinding.refreshButton.isVisible = true
+                viewBinding.errorText.isVisible = true
+                viewBinding.errorText.text = resources.getString(R.string.user_list_error)
+            }
+            is UserListViewModel.ViewState.EmptyList -> {
+                viewBinding.usersRecyclerView.isVisible = false
+                viewBinding.progressBar.isVisible = false
+
+                viewBinding.refreshButton.isVisible = true
+                viewBinding.errorText.isVisible = true
+                viewBinding.errorText.text = resources.getString(R.string.user_list_empty)
             }
         }
     }

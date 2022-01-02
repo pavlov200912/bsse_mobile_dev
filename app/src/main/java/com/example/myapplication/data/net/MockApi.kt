@@ -21,6 +21,7 @@ class MockApi : Api {
     )
 
     override suspend fun getUsers(): NetworkResponse<List<User>, Unit> {
+        return NetworkResponse.Success(emptyList(), code=200)
         return NetworkResponse.Success(
             listOf(
                 User(
