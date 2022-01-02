@@ -14,4 +14,156 @@
         android:text="@string/profile_logout_button_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_cat_sign_up"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoutButton"
+        />
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avatar"
+        android:text="spspsp"
+        android:textColor="@color/mcs_blue"
+        style="@style/TextAppearance.MaterialComponents.Headline3"
+        android:layout_marginTop="16dp"
+        />
+
+
+        <LinearLayout
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/userName"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:id="@+id/firstName"
+            >
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Имя"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textColor="@color/mcs_blue"
+                android:textStyle="bold"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/userFirstName"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Иван"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/firstName"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:id="@+id/lastName"
+            >
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Фамилия"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textColor="@color/mcs_blue"
+                android:textStyle="bold"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/userLastName"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Павлов"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/lastName"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/age"
+        >
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Возраст"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:textColor="@color/mcs_blue"
+            android:textStyle="bold"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/userAge"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="20"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/age"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:id="@+id/groupName"
+            >
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Группа"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                app:layout_constraintEnd_toStartOf="@+id/selectedName"
+                android:textColor="@color/mcs_blue"
+                android:textStyle="bold"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/userGroup"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="18.Б09-мкн"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

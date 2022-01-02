@@ -8,6 +8,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentProfileBinding
 import com.example.myapplication.ui.base.BaseFragment
@@ -26,11 +27,39 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         subscribeToEvents()
+        subscribeToViewState()
         viewBinding.logoutButton.applyInsetter {
             type(statusBars = true) { margin() }
         }
         viewBinding.logoutButton.setOnClickListener {
             viewModel.logout()
+        }
+    }
+
+    private fun subscribeToViewState() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.viewState.collect(::renderViewState)
+            }
+        }
+    }
+
+    private fun renderViewState(viewState: ProfileViewModel.ViewState) {
+        when (viewState) {
+            is ProfileViewModel.ViewState.Data -> {
+                Glide.with(viewBinding.avatar)
+                    .load(viewState.user.avatarUrl)
+                    .circleCrop()
+                    .into(viewBinding.avatar)
+                viewBinding.userFirstName.text = viewState.user.firstName
+                viewBinding.userLastName.text = viewState.user.lastName
+                viewBinding.userGroup.text = viewState.user.groupName ?: viewBinding.userGroup.text
+                viewBinding.userName.text = viewState.user.userName
+                viewBinding.userAge.text = viewState.user.age ?: viewBinding.userAge.text
+            }
+            is ProfileViewModel.ViewState.Loading -> {
+                // Loading
+            }
         }
     }
 
