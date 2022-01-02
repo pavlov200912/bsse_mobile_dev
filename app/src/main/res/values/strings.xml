@@ -39,5 +39,8 @@
     <string name="profile_logout_button_text">Выйти</string>
     <string name="common_general_error_text">Усп, что-то пошло не так :`(</string>
     <string name="common_counter_prefix">+%d</string>
+    <string name="user_list_empty">Список пользователей пока пуст</string>
+    <string name="user_list_error">Что-то пошло не так :\'(</string>
+    <string name="user_list_refresh">Попробовать еще раз</string>
 
 </resources>
